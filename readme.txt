@@ -29,7 +29,7 @@ No questions yet.
 
 == Screenshots ==
 
-1. Mass edit title tags of pages
+1. Choosing which links to nofollow
 
 == Feedback? ==
 
