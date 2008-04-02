@@ -4,7 +4,7 @@ Donate link: http://blog.andrewshell.org/nofollow-links
 Tags: nofollow, link, links, blogroll, seo
 Requires at least: 2.1
 Tested up to: 2.5.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Select which links in your blogroll you want to nofollow.
 
