@@ -3,7 +3,7 @@ Contributors: shellab
 Donate link: http://blog.andrewshell.org/nofollow-links
 Tags: nofollow, link, links, blogroll, seo
 Requires at least: 2.1
-Tested up to: 2.3.3
+Tested up to: 2.5.0
 Stable tag: 1.0.1
 
 Select which links in your blogroll you want to nofollow.
@@ -21,7 +21,7 @@ displayed.
 
 1. Upload `nofollow-links` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Navigate to Blogroll > Nofollow Links and select links you want nofollowed
+1. Navigate to Manage > Nofollow Links and select links you want nofollowed
 
 == Frequently Asked Questions ==
 

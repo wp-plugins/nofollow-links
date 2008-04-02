@@ -28,6 +28,7 @@ add_filter('get_bookmarks', 'nofollow_links_get_bookmarks', 10, 2);
 function nofollow_links_admin_menu()
 {
     add_management_page('Nofollow Links', 'Nofollow Links', 10, 'link-nofollow', 'nofollow_links_manage');
+    add_submenu_page('link-manager.php', 'Nofollow Links', 'Nofollow Links', 10, 'link-nofollow', 'nofollow_links_manage');
 }
 
 function nofollow_links_manage()
@@ -57,12 +58,10 @@ function nofollow_links_manage()
     <!--
     function checkAll(form)
     {
+    	var checkAllChecked = document.getElementById('check-all').checked;
         for (i = 0, n = form.elements.length; i < n; i++) {
             if(form.elements[i].type == "checkbox") {
-                if(form.elements[i].checked == true)
-                    form.elements[i].checked = false;
-                else
-                    form.elements[i].checked = true;
+                form.elements[i].checked = checkAllChecked;
             }
         }
     }
@@ -73,14 +72,14 @@ function nofollow_links_manage()
 
     <h2>Nofollow Links</h2>
 
-    <form id="links" name="pages-form" action="edit.php?page=link-nofollow" method="post">
+    <form id="links" name="pages-form" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=link-nofollow" method="post">
     <?php if (function_exists('wp_nonce_field')) { wp_nonce_field('nofollow_links_manage'); } ?>
     <table class="widefat">
     <thead>
     <tr>
         <th width="45%">Name</th>
         <th>URL</th>
-        <th style="text-align: center"><input type="checkbox" onclick="checkAll(document.getElementById('links'));" /></th>
+        <th style="text-align: center"><input type="checkbox" onclick="checkAll(document.getElementById('links'));" id="check-all" /></th>
     </tr>
     </thead>
     <tbody><?php
