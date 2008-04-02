@@ -3,7 +3,7 @@
 Plugin Name: Nofollow Links
 Plugin URI: http://blog.andrewshell.org/nofollow-links/
 Description: Select which links in your blogroll you want to nofollow.
-Version: 1.0.1
+Version: 1.0.2
 Author: Andrew Shell
 Author URI: http://blog.andrewshell.org/
 
@@ -27,7 +27,7 @@ add_filter('get_bookmarks', 'nofollow_links_get_bookmarks', 10, 2);
 
 function nofollow_links_admin_menu()
 {
-    add_submenu_page('link-manager.php', 'Nofollow Links', 'Nofollow Links', 10, 'link-nofollow', 'nofollow_links_manage');
+    add_management_page('Nofollow Links', 'Nofollow Links', 10, 'link-nofollow', 'nofollow_links_manage');
 }
 
 function nofollow_links_manage()
