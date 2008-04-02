@@ -73,7 +73,7 @@ function nofollow_links_manage()
 
     <h2>Nofollow Links</h2>
 
-    <form id="links" name="pages-form" action="link-manager.php?page=link-nofollow" method="post">
+    <form id="links" name="pages-form" action="edit.php?page=link-nofollow" method="post">
     <?php if (function_exists('wp_nonce_field')) { wp_nonce_field('nofollow_links_manage'); } ?>
     <table class="widefat">
     <thead>
