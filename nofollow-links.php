@@ -74,16 +74,28 @@ function nofollow_links_manage()
 
     <div class="wrap">
 
-    <h2>Nofollow Links</h2>
 
     <form id="links" name="pages-form" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=link-nofollow" method="post">
+
+    <h2>Nofollow Links</h2>
+
+    <div class="tablenav">
+    <div class="alignleft">
+    <input type="submit" class="button-secondary" name="nofollowbookmarks" id="nofollowbookmarks" value="Mark Links Nofollow &raquo;" />
+    </div>
+
+    <br class="clear" />
+    </div>
+
+    <br class="clear" />
+
     <?php if (function_exists('wp_nonce_field')) { wp_nonce_field('nofollow_links_manage'); } ?>
     <table class="widefat">
     <thead>
     <tr>
         <th width="45%">Name</th>
         <th>URL</th>
-        <th style="text-align: center"><input type="checkbox" onclick="checkAll(document.getElementById('links'));" id="check-all" /></th>
+        <th style="text-align: right"><input type="checkbox" onclick="checkAll(document.getElementById('links'));" id="check-all" /></th>
     </tr>
     </thead>
     <tbody><?php
@@ -101,7 +113,7 @@ function nofollow_links_manage()
         echo "    <tr valign=\"middle\"" . ($alt ? ' class="alternate"' : '') . ">\n";
         echo "        <td><strong>{$link->link_name}</strong><br />" . $link->link_description . "</td>\n";
         echo "        <td><a href=\"{$link->link_url}\" title=\"".sprintf(__('Visit %s'), $link->link_name)."\">{$short_url}</a></td>\n";
-        echo "        <td align=\"center\"><input type=\"checkbox\" name=\"linkcheck[]\" value=\"{$link->link_id}\"" . (isset($uNofollowLinks[$link->link_id]) ? ' checked="checked"' : '') . " /></td>\n";
+        echo "        <td style=\"text-align: right\"><input type=\"checkbox\" name=\"linkcheck[]\" value=\"{$link->link_id}\"" . (isset($uNofollowLinks[$link->link_id]) ? ' checked="checked"' : '') . " /></td>\n";
         echo "    </tr>\n";
 
         $alt = !$alt;
@@ -110,7 +122,6 @@ function nofollow_links_manage()
     </tbody>
     </table>
 
-    <p class="submit"><input type="submit" class="button" name="nofollowbookmarks" id="nofollowbookmarks" value="Mark Links Nofollow &raquo;" /></p>
     </form>
 
     </div>
