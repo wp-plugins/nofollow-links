@@ -50,7 +50,11 @@ function nofollow_links_manage()
     if (!$sNofollowLinks) {
         $sNofollowLinks = serialize(array());
     }
-    $uNofollowLinks = unserialize($sNofollowLinks);
+    if (is_string($sNofollowLinks)) {
+		$uNofollowLinks = unserialize($sNofollowLinks);
+	} elseif (is_array($sNofollowLinks)) {
+		$uNofollowLinks = $sNofollowLinks;
+	}
 
     $links = get_bookmarks();
     ?>
@@ -119,14 +123,20 @@ function nofollow_links_get_bookmarks($links, $args)
     if (!$sNofollowLinks) {
         $sNofollowLinks = serialize(array());
     }
-    $uNofollowLinks = unserialize($sNofollowLinks);
-
-    foreach (array_keys($links) as $i) {
-        if (isset($uNofollowLinks[$links[$i]->link_id])) {
-            $links[$i]->link_rel .= ' nofollow';
-            $links[$i]->link_rel = trim($links[$i]->link_rel);
-        }
+    if (is_string($sNofollowLinks)) {
+		$uNofollowLinks = unserialize($sNofollowLinks);
+	} elseif (is_array($sNofollowLinks)) {
+        $uNofollowLinks = $sNofollowLinks;
     }
+
+	if (is_array($links)) {
+	    foreach (array_keys($links) as $i) {
+	        if (isset($uNofollowLinks[$links[$i]->link_id])) {
+	            $links[$i]->link_rel .= ' nofollow';
+	            $links[$i]->link_rel = trim($links[$i]->link_rel);
+	        }
+	    }
+	}
 
     return $links;
 }
