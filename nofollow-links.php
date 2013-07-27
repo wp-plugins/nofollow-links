@@ -24,8 +24,7 @@ if (!function_exists('array_combine')) {
 
 function nofollow_links_init()
 {
-	$plugin_dir = basename( dirname( __FILE__ ) );
-	load_plugin_textdomain( 'nofollow-links', false, $plugin_dir );
+	load_plugin_textdomain( 'nofollow-links', false, 'nofollow-links/languages' );
 	add_action( 'admin_menu', 'nofollow_links_admin_menu' );
 	add_filter( 'get_bookmarks', 'nofollow_links_get_bookmarks', 10, 2 );
 }
