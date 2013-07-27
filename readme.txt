@@ -3,7 +3,7 @@ Contributors: shellab
 Donate link: http://blog.andrewshell.org/nofollow-links
 Tags: nofollow, link, links, blogroll, seo
 Requires at least: 2.3
-Tested up to: 3.3.1
+Tested up to: 3.5.2
 Stable tag: 1.0.4
 
 Select which links in your blogroll you want to nofollow.

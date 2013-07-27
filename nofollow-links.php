@@ -3,7 +3,7 @@
 Plugin Name: Nofollow Links
 Plugin URI: http://blog.andrewshell.org/nofollow-links/
 Description: Select which links in your blogroll you want to nofollow.
-Version: 1.0.4
+Version: 1.0.5
 Author: Andrew Shell
 Author URI: http://blog.andrewshell.org/
 
@@ -22,13 +22,32 @@ if (!function_exists('array_combine')) {
     }
 }
 
-add_action('admin_menu',    'nofollow_links_admin_menu');
-add_filter('get_bookmarks', 'nofollow_links_get_bookmarks', 10, 2);
+function nofollow_links_init()
+{
+	$plugin_dir = basename( dirname( __FILE__ ) );
+	load_plugin_textdomain( 'nofollow-links', false, $plugin_dir );
+	add_action( 'admin_menu', 'nofollow_links_admin_menu' );
+	add_filter( 'get_bookmarks', 'nofollow_links_get_bookmarks', 10, 2 );
+}
+add_action( 'plugins_loaded', 'nofollow_links_init' );
 
 function nofollow_links_admin_menu()
 {
-    add_management_page('Nofollow Links', 'Nofollow Links', 10, 'link-nofollow', 'nofollow_links_manage');
-    add_submenu_page('link-manager.php', 'Nofollow Links', 'Nofollow Links', 10, 'link-nofollow', 'nofollow_links_manage');
+    add_management_page(
+    	__( 'Nofollow Links', 'nofollow-links' ), 
+    	__( 'Nofollow Links', 'nofollow-links' ),
+    	10, 
+    	'link-nofollow',
+    	'nofollow_links_manage'
+    );
+    add_submenu_page(
+    	'link-manager.php', 
+    	__( 'Nofollow Links', 'nofollow-links' ),
+    	__( 'Nofollow Links', 'nofollow-links' ),
+    	10, 
+    	'link-nofollow', 
+    	'nofollow_links_manage'
+	);
 }
 
 function nofollow_links_manage()
@@ -42,8 +61,7 @@ function nofollow_links_manage()
             $nofollow = array();
         }
         update_option('nofollow_links', serialize($nofollow));
-
-        echo '<div style="background-color: rgb(207, 235, 247);" id="message" class="updated fade"><p>' . count($nofollow) . ' links marked nofollow.</p></div>' . "\n";
+        echo '<div style="background-color: rgb(207, 235, 247);" id="message" class="updated fade"><p>' . sprintf( _n( '%d link marked nofollow.', '%d links marked nofollow.', count( $nofollow ), 'nofollow-links' ), count( $nofollow ) ) . '</p></div>' . "\n";
     }
 
     $sNofollowLinks = get_option("nofollow_links");
@@ -72,17 +90,16 @@ function nofollow_links_manage()
     //-->
     </script>
 
-    <div class="wrap">
+    <div class="wrap nosubsub">
 
-
-    <form id="links" name="pages-form" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=link-nofollow" method="post">
-
-    <h2>Nofollow Links</h2>
+	<div id="icon-link-manager" class="icon32"><br></div>
+    <h2><?php _e( 'Nofollow Links', 'nofollow-links') ?></h2>
+	<form id="links" name="pages-form" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=link-nofollow" method="post">
 
     <div class="tablenav">
-    <div class="alignleft">
-    <input type="submit" class="button-secondary" name="nofollowbookmarks" id="nofollowbookmarks" value="Mark Links Nofollow &raquo;" />
-    </div>
+    <div class="alignleft"><p class="submit">
+    <input type="submit" class="button-secondary" name="nofollowbookmarks" id="nofollowbookmarks" value="<?php _e( 'Mark Links Nofollow &raquo;', 'nofollow-links') ?>" />
+    </p></div>
 
     <br class="clear" />
     </div>
@@ -93,8 +110,8 @@ function nofollow_links_manage()
     <table class="widefat">
     <thead>
     <tr>
-        <th width="45%">Name</th>
-        <th>URL</th>
+        <th width="45%"><?php _e( 'Name', 'nofollow-links') ?></th>
+        <th><?php _e( 'URL', 'nofollow-links') ?></th>
         <th style="text-align: right"><input type="checkbox" onclick="checkAll(document.getElementById('links'));" id="check-all" /></th>
     </tr>
     </thead>
@@ -112,7 +129,7 @@ function nofollow_links_manage()
 
         echo "    <tr valign=\"middle\"" . ($alt ? ' class="alternate"' : '') . ">\n";
         echo "        <td><strong>{$link->link_name}</strong><br />" . $link->link_description . "</td>\n";
-        echo "        <td><a href=\"{$link->link_url}\" title=\"".sprintf(__('Visit %s'), $link->link_name)."\">{$short_url}</a></td>\n";
+        echo "        <td><a href=\"{$link->link_url}\" title=\"".sprintf(__( 'Visit %s', 'nofollow-links' ), $link->link_name)."\">{$short_url}</a></td>\n";
         echo "        <td style=\"text-align: right\"><input type=\"checkbox\" name=\"linkcheck[]\" value=\"{$link->link_id}\"" . (isset($uNofollowLinks[$link->link_id]) ? ' checked="checked"' : '') . " /></td>\n";
         echo "    </tr>\n";
 
