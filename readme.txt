@@ -4,7 +4,7 @@ Donate link: http://blog.andrewshell.org/nofollow-links
 Tags: nofollow, link, links, blogroll, seo
 Requires at least: 2.3
 Tested up to: 3.5.2
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 
 Select which links in your blogroll you want to nofollow.
 
@@ -26,14 +26,20 @@ displayed.
 
 == Frequently Asked Questions ==
 
-No questions yet.
+= How can I get support? =
+
+Got a bug to report? Or an enhancement to recommend? Or perhaps even some code
+to submit for inclusion in the next release? Great! Share your feedback with
+the author, [Andrew Shell](http://blog.andrewshell.org/contact-andrew).
 
 == Screenshots ==
 
 1. Choosing which links to nofollow
 
-== Feedback? ==
+== Changelog ==
 
-Got a bug to report? Or an enhancement to recommend? Or perhaps even some code
-to submit for inclusion in the next release? Great! Share your feedback with
-the author, [Andrew Shell](http://blog.andrewshell.org/contact-andrew).
+= 1.0.6 =
+* Added Lithuanian translation 
+
+= 1.0.5 =
+* Added support for [i18n](http://codex.wordpress.org/I18n_for_WordPress_Developers)
