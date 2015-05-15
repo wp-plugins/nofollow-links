@@ -3,8 +3,8 @@ Contributors: shellab
 Donate link: http://blog.andrewshell.org/nofollow-links
 Tags: nofollow, link, links, blogroll, seo
 Requires at least: 2.3
-Tested up to: 3.6.1
-Stable tag: 1.0.7
+Tested up to: 4.2.2
+Stable tag: 1.0.8
 
 Select which links in your blogroll you want to nofollow.
 
@@ -38,11 +38,14 @@ the author, [Andrew Shell](http://blog.andrewshell.org/contact-andrew).
 
 == Changelog ==
 
+= 1.0.8 =
+* Added filter to enable the link manager if not already enabled
+
 = 1.0.7 =
 * Switched to using roles instead of user levels to prevent deprecated notices
 
 = 1.0.6 =
-* Added Lithuanian translation 
+* Added Lithuanian translation
 
 = 1.0.5 =
 * Added support for [i18n](http://codex.wordpress.org/I18n_for_WordPress_Developers)
