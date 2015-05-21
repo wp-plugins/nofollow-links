@@ -3,7 +3,7 @@
 Plugin Name: Nofollow Links
 Plugin URI: http://blog.andrewshell.org/nofollow-links/
 Description: Select which links in your blogroll you want to nofollow.
-Version: 1.0.7
+Version: 1.0.9
 Author: Andrew Shell
 Author URI: http://blog.andrewshell.org/
 Text Domain: nofollow-links
@@ -13,7 +13,7 @@ License: GPL2
 Copyright (c) 2013 Andrew Shell  (email : andrew@andrewshell.org)
 
 This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as 
+it under the terms of the GNU General Public License, version 2, as
 published by the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,
@@ -41,24 +41,25 @@ function nofollow_links_init()
 	load_plugin_textdomain( 'nofollow-links', false, 'nofollow-links/languages' );
 	add_action( 'admin_menu', 'nofollow_links_admin_menu' );
 	add_filter( 'get_bookmarks', 'nofollow_links_get_bookmarks', 10, 2 );
+	add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 }
 add_action( 'plugins_loaded', 'nofollow_links_init' );
 
 function nofollow_links_admin_menu()
 {
 	add_management_page(
-		__( 'Nofollow Links', 'nofollow-links' ), 
 		__( 'Nofollow Links', 'nofollow-links' ),
-		'manage_options', 
+		__( 'Nofollow Links', 'nofollow-links' ),
+		'manage_options',
 		'link-nofollow',
 		'nofollow_links_manage'
 	);
 	add_submenu_page(
-		'link-manager.php', 
+		'link-manager.php',
 		__( 'Nofollow Links', 'nofollow-links' ),
 		__( 'Nofollow Links', 'nofollow-links' ),
-		'manage_options', 
-		'link-nofollow', 
+		'manage_options',
+		'link-nofollow',
 		'nofollow_links_manage'
 	);
 }
