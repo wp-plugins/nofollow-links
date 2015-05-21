@@ -4,7 +4,7 @@ Donate link: http://blog.andrewshell.org/nofollow-links
 Tags: nofollow, link, links, blogroll, seo
 Requires at least: 2.3
 Tested up to: 4.2.2
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 
 Select which links in your blogroll you want to nofollow.
 
@@ -32,11 +32,19 @@ Got a bug to report? Or an enhancement to recommend? Or perhaps even some code
 to submit for inclusion in the next release? Great! Share your feedback with
 the author, [Andrew Shell](http://blog.andrewshell.org/contact-andrew).
 
+= Who provided the translations? =
+
+* Lithuanian translation was provided by [Vincent Grinius](http://www.host1plus.com/)
+* Serbo-Croatian translation was provided by [Andrijana Nikolic](http://webhostinggeeks.com/)
+
 == Screenshots ==
 
 1. Choosing which links to nofollow
 
 == Changelog ==
+
+= 1.0.9 =
+* Added Serbo-Croatian language
 
 = 1.0.8 =
 * Added filter to enable the link manager if not already enabled
